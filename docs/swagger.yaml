@@ -1,0 +1,118 @@
+definitions:
+  model.Car:
+    properties:
+      createdAt:
+        type: string
+      id:
+        type: integer
+      merk:
+        type: string
+      pemilik:
+        type: string
+      type:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /car/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get detail of car corresponding to the input ID
+      parameters:
+      - description: ID of the car
+        in: path
+        name: Id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Car'
+      summary: Get Car for a given ID
+      tags:
+      - cars
+    patch:
+      consumes:
+      - application/json
+      description: Update detail of car corresponding to the input ID
+      parameters:
+      - description: ID of the car
+        in: path
+        name: Id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Car'
+      summary: Update Car for a given ID
+      tags:
+      - cars
+  /cars:
+    get:
+      consumes:
+      - application/json
+      description: Get Detail All object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Car'
+      summary: Get All Object
+      tags:
+      - cars
+    post:
+      consumes:
+      - application/json
+      description: Post detail of car corresponding to the input ID
+      parameters:
+      - description: create car
+        in: body
+        name: model.Car
+        required: true
+        schema:
+          $ref: '#/definitions/model.Car'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Car'
+      summary: Post Details for a given id
+      tags:
+      - cars
+  /cars/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete detail of car corresponding to the input ID
+      parameters:
+      - description: ID of the car
+        in: path
+        name: Id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Car'
+      summary: Delete Car for a given ID
+      tags:
+      - cars
+swagger: "2.0"
